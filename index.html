@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Neo Blog</title>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBY1ghLJ7LlraovUSLgNMu2iBVmYXcCzGQ",
+  authDomain: "neoblog-rjwl.firebaseapp.com",
+  databaseURL: "https://neoblog-rjwl-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "neoblog-rjwl",
+  storageBucket: "neoblog-rjwl.firebasestorage.app",
+  messagingSenderId: "263085827132",
+  appId: "1:263085827132:web:d35cb3d5abf4c9c78b4f39"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const snap = await get(ref(db, "blog/content"));
+if (snap.exists()) {
+  document.open();
+  document.write(snap.val());
+  document.close();
+}
+</script>
+</head>
+<body></body>
+</html>
